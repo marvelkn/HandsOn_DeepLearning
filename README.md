@@ -17,9 +17,29 @@ Pengerjaan hands-on berdasarkan TLM Week 1–6 dan contoh kode dari [Packt, Deep
 
 ## Menjalankan
 
-Gunakan Python 3.12. Instal dependensi dengan pip install -r requirements.txt, lalu buka notebook dari direktori Week yang sesuai. Week 4 memakai dataset lokal. Week 1, 2, 3, dan 5 mengunduh dataset saat pertama dijalankan. Week 6 memakai data sintetis.
+Gunakan Python 3.12. Instal dependensi:
 
-Notebook disimpan tanpa output agar angka hasil berasal dari run sendiri. Jalankan sel berurutan, lalu simpan notebook jika output akan dikumpulkan. Lingkungan pembuat repo tidak menyediakan TensorFlow, sehingga eksperimen belum dieksekusi di sini.
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Buka notebook dari direktori Week yang sesuai dan jalankan sel berurutan. Week 4 memakai dataset lokal. Week 1, 2, 3, dan 5 mengunduh dataset saat pertama dijalankan. Week 6 memakai data sintetis.
+
+## Hasil run lokal
+
+Semua notebook dijalankan dari awal sampai akhir dengan Python 3.12 dan TensorFlow 2.20 di CPU. Output yang tersimpan berasal dari run tersebut.
+
+| Week | Eksperimen | Hasil |
+| --- | --- | --- |
+| 1 | MNIST, model dropout terpilih | Test accuracy 97,59% |
+| 2 | Regresi sederhana NumPy (data sintetis) | Test MAE 6,779 |
+| 2 | Regresi sederhana TensorFlow (data sintetis) | Test MAE 8,855 |
+| 2 | Auto MPG | Test MAE 1,776 mpg |
+| 2 | MNIST softmax | Test accuracy 92,62% |
+| 3 | CNN MNIST | Test accuracy 99,13% |
+| 4 | SMS spam | Test accuracy 97,8%; PR-AUC 0,9721 |
+| 5 | GRU prediksi karakter | Validation loss 2,915 |
+| 6 | Transformer pada 12 pasangan sintetis | Exact match 12/12 |
 
 ## Sumber data
 
@@ -30,4 +50,4 @@ Notebook disimpan tanpa output agar angka hasil berasal dari run sendiri. Jalank
 
 ## Batasan
 
-Week 4 memakai embedding yang dilatih dari awal. Week 5 melatih GRU kecil selama lima epoch. Week 6 memakai pasangan kalimat sintetis, sehingga evaluasinya hanya memeriksa alur Transformer, bukan kemampuan terjemahan umum.
+Week 4 membuang 403 teks SMS duplikat sebelum split, tetapi kemiripan pesan yang tidak identik masih bisa memengaruhi evaluasi. Embedding dilatih dari awal. Week 5 memakai korpus terbatas dan tiga epoch; contoh teks keluarannya belum koheren. Week 6 memakai pasangan kalimat sintetis dengan kosakata yang sama di train dan test, sehingga exact match 12/12 belum menunjukkan kemampuan terjemahan umum.
